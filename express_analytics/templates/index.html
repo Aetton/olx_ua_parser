@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+<link href="https://getbootstrap.com/docs/4.0/examples/sign-in/signin.css"
+      rel="stylesheet">
+
+
+{% block title %} Запрос {% endblock %}
+
+{% block content %}
+    <form class="form-signin">
+        <img class="mb-4"
+             src="https://img.icons8.com/pastel-glyph/344/graph-report--v1.png"
+             alt=""
+             width="72"
+             height="72">
+        <h1 class="h3 mb-3 font-weight-normal">Строим отчет для OLX.UA</h1>
+        <label for="id_url"
+               class="sr-only">
+            URL
+        </label>
+        <input type="text"
+               name="url"
+               id="id_url"
+               class="form-control"
+               placeholder="nedvizhimost/kvartiry-komnaty"
+               required
+               autofocus>
+        <label for="id_email"
+               class="sr-only">
+            Email для получения отчета
+        </label>
+        <input type="email"
+               name="email"
+               id="id_email"
+               class="form-control"
+               placeholder="Email address"
+               required>
+        <button class="btn btn-lg btn-primary btn-block"
+                type="submit">
+            Посчитать
+        </button>
+    </form>
+{% endblock %}
