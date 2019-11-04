@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'express_analytics',
 ]
 
 MIDDLEWARE = [
@@ -118,3 +119,22 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
+
+
+EMAIL_SUBJECT_PREFIX = '[MyBlog] '
+
+#Установите здесь настройки своего почтового ящика.
+EMAIL_HOST = 'smtp.yandex.com'
+EMAIL_HOST_USER = 'aetton@yandex.ru'
+EMAIL_HOST_PASSWORD = 'erecbkjcz'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+
+#Укажите здесь URL своего проекта
+ABSOLUTE_URL = '127.0.0.1:8000'
+
+REDIS_HOST = '127.0.0.1'
+REDIS_PORT = '6379'
+BROKER_URL = 'redis://' + REDIS_HOST + ':' + REDIS_PORT + '/0'
+BROKER_TRANSPORT_OPTIONS = {'visibility_timeout': 3600}
+CELERY_RESULT_BACKEND = 'redis://' + REDIS_HOST + ':' + REDIS_PORT + '/0'

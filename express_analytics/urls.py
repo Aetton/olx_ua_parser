@@ -17,9 +17,10 @@ from django.conf.urls import url
 from django.contrib import admin
 from django.urls import path
 
-from express_analytics.views import RequestView
+from express_analytics.views import RequestView, ReportDetailView
 
 urlpatterns = [
     url('^$', RequestView.as_view(), name='request'),
+    path(r'report/<int:pk>', ReportDetailView.as_view(), name='report_detail'),
 
 ]

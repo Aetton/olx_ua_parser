@@ -1,12 +1,14 @@
 {% extends "base.html" %}
-<link href="https://getbootstrap.com/docs/4.0/examples/sign-in/signin.css"
-      rel="stylesheet">
+
 
 
 {% block title %} Запрос {% endblock %}
 
 {% block content %}
-    <form class="form-signin">
+    <link href="https://getbootstrap.com/docs/4.0/examples/sign-in/signin.css"
+      rel="stylesheet">
+    <form class="form-signin text-center" method="post">
+        {% csrf_token %}
         <img class="mb-4"
              src="https://img.icons8.com/pastel-glyph/344/graph-report--v1.png"
              alt=""
