@@ -5,14 +5,23 @@ from django.db import models
 from django.db.models import CharField, EmailField, TextField, IntegerField
 from olx_ua_parser.settings import EMAIL_HOST_USER
 
+def assemble_time_list():
+    hours = range(24)
+    result = '{'
+    for hour in hours:
+        result += '"{hour}:00":0, "{hour}:30":0,'.format(hour=hour)
+    return result[:-1] + '}'
+
 
 class Report(models.Model):
     email = EmailField('Email', blank=False)
     url = CharField(max_length=255, blank=False)
     title = CharField(default='', max_length=255)
     pages_amount = IntegerField(default=0)
-    weekly = TextField('')
-    hourly = TextField('')
+    weekly = TextField(default=u'{"Понедельник":0,"Вторник":0,'
+                               u'"Среда":0,"Четверг":0,"Пятница":0,'
+                               u'"Суббота":0,"Воскресенье":0}')
+    hourly = TextField(default=assemble_time_list())
 
     def assemble_url(self):
         return 'https://olx.ua/{url}/'.format(url=self.url)
