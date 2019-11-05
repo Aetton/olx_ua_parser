@@ -6,10 +6,9 @@ from django.db.models import CharField, EmailField, TextField, IntegerField
 from olx_ua_parser.settings import EMAIL_HOST_USER
 
 def assemble_time_list():
-    hours = range(24)
     result = '{'
-    for hour in hours:
-        result += '"{hour}:00":0, "{hour}:30":0,'.format(hour=hour)
+    for hour in range(24):
+        result += '"{hour}":0,'.format(hour=hour)
     return result[:-1] + '}'
 
 
@@ -24,7 +23,7 @@ class Report(models.Model):
     hourly = TextField(default=assemble_time_list())
 
     def assemble_url(self):
-        return 'https://olx.ua/{url}/'.format(url=self.url)
+        return 'https://www.olx.ua/{url}/'.format(url=self.url)
 
     def assemble_output_url(self):
         from django.urls import reverse
