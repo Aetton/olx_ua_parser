@@ -1,3 +1,5 @@
+import json
+
 from django.contrib import messages
 from django.shortcuts import render, redirect
 
@@ -29,3 +31,9 @@ class RequestView(View):
 
 class ReportDetailView(DetailView):
     model = Report
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['object'].hourly = [value for value in json.loads(self.object.hourly).values()]
+        context['object'].weekly = [value for value in json.loads(self.object.weekly).values()]
+        return context
