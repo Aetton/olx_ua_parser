@@ -1,4 +1,3 @@
-<canvas class="my-4" id="myChart" width="900" height="380"></canvas>
 {% extends "base.html" %}
 
 
@@ -10,11 +9,14 @@
         <div class="row">
             <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
                 <div class="d-flex pb-2 mb-3 border-bottom">
-                    <h1 class="h2">Dashboard</h1>
+                    <h2 class="h2">Отчет по странице</h2>
+                    <h2 class="h2"> {{ object.title }}</h2>
                 </div>
+                <h3> По часам </h3>
+                <canvas class="my-4" id="report_hourly" width="700" height="280"></canvas>
 
-                <canvas class="my-4" id="report_hourly" width="900" height="380"></canvas>
-                <canvas class="my-4" id="report_weekly" width="900" height="380"></canvas>
+                <h3> По дням недели </h3>
+                <canvas class="my-4" id="report_weekly" width="700" height="280"></canvas>
 
             </main>
         </div>

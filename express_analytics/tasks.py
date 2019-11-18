@@ -16,6 +16,7 @@ def parse_data_from_url(report_id):
     locale.setlocale(locale.LC_TIME, 'ru_RU.UTF-8') #Пока не проверял, как работает с локалью сам Джанго, потом протестирую
     report = Report.objects.get(id=report_id)
     report.pages_amount = get_pages_amount(report_id)
+    report.title = get_title(report_id)
     weekly = json.loads(report.weekly)
     hourly = json.loads(report.hourly)
     for page in range(1, report.pages_amount+1):
@@ -43,6 +44,13 @@ def get_pages_amount(report_id):
     g = Grab(log_file='index_out.html')
     g.go(url)
     return int(g.doc.select("//*[@data-cy='page-link-last']").text())
+
+def get_title(report_id):
+    report = Report.objects.get(id=report_id)
+    url = report.assemble_url()
+    g = Grab(log_file='index_out.html')
+    g.go(url)
+    return g.doc.select('.//title').text()
 
 def get_page_datetime(url):
     logging = get_task_logger('page')
