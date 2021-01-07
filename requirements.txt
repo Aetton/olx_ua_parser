@@ -9,7 +9,7 @@ grab==0.6.41
 idna==2.8
 importlib-metadata==0.23
 kombu==4.6.5
-lxml==4.4.1
+lxml==4.6.2
 more-itertools==7.2.0
 pycurl==7.43.0.1
 pytils==0.3
