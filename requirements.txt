@@ -19,7 +19,7 @@ requests==2.22.0
 selection==0.0.14
 six==1.12.0
 sqlparse==0.3.0
-urllib3==1.25.6
+urllib3==1.26.5
 user-agent==0.1.9
 vine==1.3.0
 weblib==0.1.30
